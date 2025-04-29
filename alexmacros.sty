@@ -19,7 +19,7 @@
         enhanced,
         colback=gray!20,
         colframe=gray!40,
-        boxrule=/1pt,
+        boxrule=0pt,
         breakable,
         box align=base,
         sharp corners,
@@ -36,12 +36,38 @@
     \end{tcolorbox}
 \end{center}
 }
+
 % Highlighted red italic inline comment in small font with grey background (doesn't support math mode)
 \newcommand{\icmnt}[1]{%
   {\begingroup%
     \sethlcolor{gray!20}%
     \textit{\small\textcolor{red}{\hl{#1}}}%
   \endgroup}%
+}
+
+% TODO
+\newcommand{\todo}[1]{%
+\begin{center}
+    \begin{tcolorbox}[
+        enhanced,
+        colback=gray!20,
+        colframe=gray!50,
+        boxrule=1pt,
+        breakable,
+        box align=base,
+        sharp corners,
+        left=2pt,
+        right=2pt,
+        top=1pt,
+        bottom=1pt,
+        nobeforeafter,
+        before skip=2pt,
+        after skip=5pt,
+        width = 0.95\linewidth
+        ]
+        {\small\textcolor{blue}{\textbf{TODO: #1}}}
+    \end{tcolorbox}
+\end{center}
 }
 
 % Vertical space

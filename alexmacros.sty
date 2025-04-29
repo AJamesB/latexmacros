@@ -1,0 +1,60 @@
+% alexmacros.sty
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{alexmacros}[2025/04/29 Custom macros by Alex Bergesen]
+
+% Required packages
+\RequirePackage{soul}     % For highlighting
+\RequirePackage{xcolor}   % For custom colors
+\RequirePackage{amsmath}  % Math formatting
+\RequirePackage{amssymb}  % Extra math symbols
+\RequirePackage{tcolorbox}
+\tcbuselibrary{listings, breakable, skins}
+
+%% ---------- Text Formatting ----------
+
+% Highlighted red italic block comment in small font with grey background
+\newcommand{\bcmnt}[1]{%
+\begin{center}
+    \begin{tcolorbox}[
+        enhanced,
+        colback=gray!20,
+        colframe=gray!40,
+        boxrule=/1pt,
+        breakable,
+        box align=base,
+        sharp corners,
+        left=2pt,
+        right=2pt,
+        top=1pt,
+        bottom=1pt,
+        nobeforeafter,
+        before skip=2pt,
+        after skip=5pt,
+        width = 0.95\linewidth
+        ]
+        {\small\textcolor{red}{\textit{#1}}}
+    \end{tcolorbox}
+\end{center}
+}
+% Highlighted red italic inline comment in small font with grey background (doesn't support math mode)
+\newcommand{\icmnt}[1]{%
+  {\begingroup%
+    \sethlcolor{gray!20}%
+    \textit{\small\textcolor{red}{\hl{#1}}}%
+  \endgroup}%
+}
+
+% Vertical space
+\newcommand{\vspacegap}{\vspace{1em}}
+
+% Bracketing
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\cb}[1]{\left\{#1\right\}}
+\newcommand{\sqb}[1]{\left[#1\right]}
+
+%% ---------- Abbreviations ----------
+
+\newcommand{\ie}{i.e.,\ }
+\newcommand{\eg}{e.g.,\ }
+\newcommand{\etc}{etc.\ }
+\newcommand{\etal}{et~al.\ }

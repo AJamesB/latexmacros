@@ -46,28 +46,30 @@
 }
 
 % TODO
+% TODO
 \newcommand{\todo}[1]{%
-\begin{center}
+  \begin{center}
     \begin{tcolorbox}[
-        enhanced,
-        colback=gray!20,
-        colframe=gray!50,
-        boxrule=1pt,
-        breakable,
-        box align=base,
-        sharp corners,
-        left=2pt,
-        right=2pt,
-        top=1pt,
-        bottom=1pt,
-        nobeforeafter,
-        before skip=2pt,
-        after skip=5pt,
-        width = 0.95\linewidth
-        ]
-        {\small{\texttt{TODO: \textcolor{blue}{#1}}}}
+      enhanced,
+      breakable,
+      colback=gray!20,
+      colframe=gray!50,
+      coltext=blue,
+      boxrule=1pt,
+      box align=base,
+      sharp corners,
+      left=2pt,
+      right=2pt,
+      top=1pt,
+      bottom=1pt,
+      nobeforeafter,
+      before skip=2pt,
+      after skip=5pt,
+      width=\linewidth
+      ]
+      {\small\texttt{\textcolor{black}{TODO:} #1}}
     \end{tcolorbox}
-\end{center}
+  \end{center}
 }
 
 % Vertical space

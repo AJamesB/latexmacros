@@ -1,6 +1,13 @@
 % alexmacros.sty
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{alexmacros}[2025/04/29 Custom macros by Alex Bergesen]
+\ProvidesPackage{alexmacros}[2025/05/20 Custom macros for Alex]
+
+\RequirePackage{etoolbox}
+\newtoggle{forPrint}
+\DeclareOption{print}{\toggletrue{forPrint}}
+\DeclareOption{draft}{\togglefalse{forPrint}}
+\DeclareOption*{\togglefalse{forPrint}} % default: forPrint=false
+\ProcessOptions\relax
 
 % Required packages
 \RequirePackage{soul}     % For highlighting
@@ -14,40 +21,43 @@
 
 % Highlighted red italic block comment in small font with grey background
 \newcommand{\bcmnt}[1]{%
-\begin{center}
-    \begin{tcolorbox}[
-        enhanced,
-        colback=gray!20,
-        colframe=gray!40,
-        boxrule=0pt,
-        breakable,
-        box align=base,
-        sharp corners,
-        left=2pt,
-        right=2pt,
-        top=1pt,
-        bottom=1pt,
-        nobeforeafter,
-        before skip=2pt,
-        after skip=5pt,
-        width = \linewidth
-        ]
-        {\small\textcolor{red}{\textit{#1}}}
-    \end{tcolorbox}
-\end{center}
+\iftoggle{forPrint}{}{
+    \begin{center}
+        \begin{tcolorbox}[
+            enhanced,
+            colback=gray!20,
+            colframe=gray!40,
+            boxrule=0pt,
+            breakable,
+            box align=base,
+            sharp corners,
+            left=2pt,
+            right=2pt,
+            top=1pt,
+            bottom=1pt,
+            nobeforeafter,
+            before skip=2pt,
+            after skip=5pt,
+            width = 0.95\linewidth
+            ]
+            {\small\textcolor{red}{\textit{#1}}}
+        \end{tcolorbox}
+    \end{center}
 }
-
+}
 % Highlighted red italic inline comment in small font with grey background (doesn't support math mode)
 \newcommand{\icmnt}[1]{%
+\iftoggle{forPrint}{}{
   {\begingroup%
     \sethlcolor{gray!20}%
     \textit{\small\textcolor{red}{\hl{#1}}}%
   \endgroup}%
 }
+}
 
 % TODO
-% TODO
 \newcommand{\todo}[1]{%
+\iftoggle{forPrint}{}{
   \begin{center}
     \begin{tcolorbox}[
       enhanced,
@@ -70,6 +80,7 @@
       {\small\texttt{\textcolor{black}{TODO:} #1}}
     \end{tcolorbox}
   \end{center}
+  }
 }
 
 % Vertical space
